@@ -83,7 +83,6 @@ public class UsdaInfoService : IUsdaInfoService
             }
         }
 
-
         // TODO: add filtering (maybe a switch case grabbed from front end...)
 
         sortedDataObjects = dataObjects.AsEnumerable()
@@ -94,7 +93,7 @@ public class UsdaInfoService : IUsdaInfoService
             .ToList();
         return sortedDataObjects;
     }
-    
+
     public async Task<List<Datum>> GetUsdaDataObjectsRefactoredMultiYear(string metric, string commodity, string year, string short_desc)
     {
         url = BuildUsdaUrlMultiYear(metric, commodity, year, short_desc);
@@ -155,7 +154,6 @@ public class UsdaInfoService : IUsdaInfoService
                 );
             }
         }
-
 
         // TODO: add filtering (maybe a switch case grabbed from front end...)
 
@@ -226,7 +224,7 @@ public class UsdaInfoService : IUsdaInfoService
 
         return url;
     }
-    
+
     private string BuildUsdaUrlMultiYear(string metric, string commodity, string year, string short_desc)
     {
         _usdaConfig.ApiKey = "C2ADF26B-BD8D-328A-968F-2F175A287144";
@@ -339,9 +337,9 @@ public class UsdaInfoService : IUsdaInfoService
         var dataObjects = new List<Datum>();
         var filteredDataObjects = new List<Datum>();
 
-        using (HttpClient client = new HttpClient())
-        {
-            var response = client.GetAsync(url).Result;
+        var client = _httpFactory.CreateClient();
+
+        var response = client.GetAsync(url).Result;
             var json = response.Content.ReadAsStringAsync().Result;
             var usdaResponse = JsonSerializer.Deserialize<UsdaInfo>(json);
             foreach (var item in usdaResponse.data)
@@ -390,7 +388,6 @@ public class UsdaInfoService : IUsdaInfoService
                 }
                 );
             }
-        }
 
         foreach (var item in dataObjects)
         {
@@ -410,58 +407,58 @@ public class UsdaInfoService : IUsdaInfoService
         string url = $"{baseUrl}key=C2ADF26B-BD8D-328A-968F-2F175A287144&statisticcat_desc=AREA PLANTED&unit_desc=ACRES&year__GE=2020&commodity_desc=CORN";
         var dataObjects = new List<Datum>();
 
-        using (HttpClient client = new HttpClient())
+        var client = _httpFactory.CreateClient();
+
+        var response = client.GetAsync(url).Result;
+        var json = response.Content.ReadAsStringAsync().Result;
+        var usdaResponse = JsonSerializer.Deserialize<UsdaInfo>(json);
+        foreach (var item in usdaResponse.data)
         {
-            var response = client.GetAsync(url).Result;
-            var json = response.Content.ReadAsStringAsync().Result;
-            var usdaResponse = JsonSerializer.Deserialize<UsdaInfo>(json);
-            foreach (var item in usdaResponse.data)
+            dataObjects.Add(new Datum
             {
-                dataObjects.Add(new Datum
-                {
-                    prodn_practice_desc = item.prodn_practice_desc,
-                    domain_desc = item.domain_desc,
-                    county_name = item.county_name,
-                    freq_desc = item.freq_desc,
-                    begin_code = item.begin_code,
-                    watershed_code = item.watershed_code,
-                    end_code = item.end_code,
-                    state_alpha = item.state_alpha,
-                    agg_level_desc = item.agg_level_desc,
-                    CV = item.CV,
-                    state_ansi = item.state_ansi,
-                    util_practice_desc = item.util_practice_desc,
-                    region_desc = item.region_desc,
-                    state_fips_code = item.state_fips_code,
-                    county_code = item.county_code,
-                    week_ending = item.week_ending,
-                    year = item.year,
-                    watershed_desc = item.watershed_desc,
-                    unit_desc = item.unit_desc,
-                    country_name = item.country_name,
-                    domaincat_desc = item.domaincat_desc,
-                    location_desc = item.location_desc,
-                    zip_5 = item.zip_5,
-                    group_desc = item.group_desc,
-                    load_time = item.load_time,
-                    Value = item.Value,
-                    asd_desc = item.asd_desc,
-                    county_ansi = item.county_ansi,
-                    asd_code = item.asd_code,
-                    commodity_desc = item.commodity_desc,
-                    statisticcat_desc = item.statisticcat_desc,
-                    congr_district_code = item.congr_district_code,
-                    state_name = item.state_name,
-                    reference_period_desc = item.reference_period_desc,
-                    source_desc = item.source_desc,
-                    class_desc = item.class_desc,
-                    sector_desc = item.sector_desc,
-                    country_code = item.country_code,
-                    short_desc = item.short_desc
-                }
-                );
+                prodn_practice_desc = item.prodn_practice_desc,
+                domain_desc = item.domain_desc,
+                county_name = item.county_name,
+                freq_desc = item.freq_desc,
+                begin_code = item.begin_code,
+                watershed_code = item.watershed_code,
+                end_code = item.end_code,
+                state_alpha = item.state_alpha,
+                agg_level_desc = item.agg_level_desc,
+                CV = item.CV,
+                state_ansi = item.state_ansi,
+                util_practice_desc = item.util_practice_desc,
+                region_desc = item.region_desc,
+                state_fips_code = item.state_fips_code,
+                county_code = item.county_code,
+                week_ending = item.week_ending,
+                year = item.year,
+                watershed_desc = item.watershed_desc,
+                unit_desc = item.unit_desc,
+                country_name = item.country_name,
+                domaincat_desc = item.domaincat_desc,
+                location_desc = item.location_desc,
+                zip_5 = item.zip_5,
+                group_desc = item.group_desc,
+                load_time = item.load_time,
+                Value = item.Value,
+                asd_desc = item.asd_desc,
+                county_ansi = item.county_ansi,
+                asd_code = item.asd_code,
+                commodity_desc = item.commodity_desc,
+                statisticcat_desc = item.statisticcat_desc,
+                congr_district_code = item.congr_district_code,
+                state_name = item.state_name,
+                reference_period_desc = item.reference_period_desc,
+                source_desc = item.source_desc,
+                class_desc = item.class_desc,
+                sector_desc = item.sector_desc,
+                country_code = item.country_code,
+                short_desc = item.short_desc
             }
+            );
         }
+
 
         return dataObjects;
     }
@@ -472,9 +469,9 @@ public class UsdaInfoService : IUsdaInfoService
         string url = $"{baseUrl}{_usdaConfig.ApiKey}&statisticcat_desc={metric}&unit_desc=ACRES&year__GE={year}&commodity_desc={commodity}";
         var dataObjects = new List<Datum>();
 
-        using (HttpClient client = new HttpClient())
-        {
-            var response = client.GetAsync(url).Result;
+        var client = _httpFactory.CreateClient();
+
+        var response = client.GetAsync(url).Result;
             var json = response.Content.ReadAsStringAsync().Result;
             var usdaResponse = JsonSerializer.Deserialize<UsdaInfo>(json);
             foreach (var item in usdaResponse.data)
@@ -523,7 +520,6 @@ public class UsdaInfoService : IUsdaInfoService
                 }
                 );
             }
-        }
 
         return dataObjects;
     }
@@ -585,9 +581,9 @@ public class UsdaInfoService : IUsdaInfoService
         var dataObjects = new List<Datum>();
         var sortedDataObjects = new List<Datum>();
 
-        using (HttpClient client = new HttpClient())
-        {
-            var response = client.GetAsync(url).Result;
+        var client = _httpFactory.CreateClient();
+
+        var response = client.GetAsync(url).Result;
             var json = response.Content.ReadAsStringAsync().Result;
             var usdaResponse = JsonSerializer.Deserialize<UsdaInfo>(json);
             foreach (var item in usdaResponse.data)
@@ -639,7 +635,7 @@ public class UsdaInfoService : IUsdaInfoService
                     );
                 }
             }
-        }
+        
 
         //foreach (var item in dataObjects)
         //{

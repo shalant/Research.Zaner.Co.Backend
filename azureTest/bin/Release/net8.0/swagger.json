@@ -73,6 +73,40 @@
         }
       }
     },
+    "/api/GetUsdaDataRefactoredMultiYear": {
+      "get": {
+        "tags": [
+          "UsdaInfo"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Metric",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Commodity",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Year",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "short_desc",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/GetByState": {
       "get": {
         "tags": [
