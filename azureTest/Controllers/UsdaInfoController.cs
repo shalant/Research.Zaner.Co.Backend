@@ -38,6 +38,14 @@ public class UsdaInfoController : ControllerBase
     }
     
     [HttpGet]
+    [Route("/api/GetUsdaDataRefactoredMultiYear")]
+    public async Task<IActionResult> GetUsdaDataObjectsRefactoredMultiYear(string Metric, string Commodity, string Year, string short_desc)
+    {
+        var usdaDataObjects = await _usdaInfoService.GetUsdaDataObjectsRefactoredMultiYear(Metric, Commodity, Year, short_desc);
+        return Ok(usdaDataObjects);
+    }
+    
+    [HttpGet]
     [Route("/api/GetByState")]
     public IActionResult GetUsdaDataAsObjectsByState(string Metric, string Commodity, string Year, string short_desc, string stateAlpha)
     {
