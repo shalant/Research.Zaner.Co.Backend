@@ -89,7 +89,7 @@ public class UsdaInfoService : IUsdaInfoService
             .Where(x => x.domain_desc == "TOTAL" || x.location_desc == "US TOTAL")
             .OrderByDescending(x => x.year)
             // TODO: consider filtering by reference_period_desc
-            .ThenByDescending(x => x.load_time)
+            .ThenBy(x => x.load_time)
             .ToList();
         return sortedDataObjects;
     }
