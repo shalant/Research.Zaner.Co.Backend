@@ -87,6 +87,82 @@ public class UsdaInfoService : IUsdaInfoService
 
         sortedDataObjects = dataObjects.AsEnumerable()
             .Where(x => x.domain_desc == "TOTAL" || x.location_desc == "US TOTAL")
+            .Where(x => x.source_desc != "CENSUS")
+            .OrderByDescending(x => x.year)
+            // TODO: consider filtering by reference_period_desc
+            .ThenBy(x => x.load_time)
+            .ToList();
+        return sortedDataObjects;
+    }
+    
+    public async Task<List<Datum>> GetUsdaDataObjectsStates(string metric, string commodity, string year, string short_desc)
+    {
+        //url = $"{baseUrl}{_usdaConfig.ApiKey}&statisticcat_desc=PROGRESS&year__LIKE={year}&commodity_desc=CORN&short_desc=CORN%20-%20PROGRESS,%20MEASURED%20IN%20PCT%20EMERGED";
+        //url = $"{baseUrl}{_usdaConfig.ApiKey}&statisticcat_desc={metric}&year__LIKE={year}&commodity_desc={commodity}&short_desc={short_desc}";
+        url = BuildUsdaUrl(metric, commodity, year, short_desc);
+
+        var dataObjects = new List<Datum>();
+        var sortedDataObjects = new List<Datum>();
+
+        var client = _httpFactory.CreateClient();
+        var response = await client.GetAsync(url);
+        var json = await response.Content.ReadAsStringAsync();
+        var usdaResponse = JsonSerializer.Deserialize<UsdaInfo>(json);
+        foreach (var item in usdaResponse.data)
+        {
+            if (item.agg_level_desc != "NATIONAL")
+            {
+                dataObjects.Add(new Datum
+                {
+                    prodn_practice_desc = item.prodn_practice_desc,
+                    domain_desc = item.domain_desc,
+                    county_name = item.county_name,
+                    freq_desc = item.freq_desc,
+                    begin_code = item.begin_code,
+                    watershed_code = item.watershed_code,
+                    end_code = item.end_code,
+                    state_alpha = item.state_alpha,
+                    agg_level_desc = item.agg_level_desc,
+                    CV = item.CV,
+                    state_ansi = item.state_ansi,
+                    util_practice_desc = item.util_practice_desc,
+                    region_desc = item.region_desc,
+                    state_fips_code = item.state_fips_code,
+                    county_code = item.county_code,
+                    week_ending = item.week_ending,
+                    year = item.year,
+                    watershed_desc = item.watershed_desc,
+                    unit_desc = item.unit_desc,
+                    country_name = item.country_name,
+                    domaincat_desc = item.domaincat_desc,
+                    location_desc = item.location_desc,
+                    zip_5 = item.zip_5,
+                    group_desc = item.group_desc,
+                    load_time = item.load_time,
+                    Value = item.Value,
+                    asd_desc = item.asd_desc,
+                    county_ansi = item.county_ansi,
+                    asd_code = item.asd_code,
+                    commodity_desc = item.commodity_desc,
+                    statisticcat_desc = item.statisticcat_desc,
+                    congr_district_code = item.congr_district_code,
+                    state_name = item.state_name,
+                    reference_period_desc = item.reference_period_desc,
+                    source_desc = item.source_desc,
+                    class_desc = item.class_desc,
+                    sector_desc = item.sector_desc,
+                    country_code = item.country_code,
+                    short_desc = item.short_desc
+                }
+                );
+            }
+        }
+
+        // TODO: add filtering (maybe a switch case grabbed from front end...)
+
+        sortedDataObjects = dataObjects.AsEnumerable()
+            //.Where(x => x.domain_desc == "TOTAL" || x.location_desc == "US TOTAL")
+            .Where(x => x.source_desc != "CENSUS")
             .OrderByDescending(x => x.year)
             // TODO: consider filtering by reference_period_desc
             .ThenBy(x => x.load_time)
@@ -217,6 +293,14 @@ public class UsdaInfoService : IUsdaInfoService
                     short_desc = "SOYBEANS - STOCKS, MEASURED IN BU";
                     url = $"{baseUrl}{_usdaConfig.ApiKey}&year__LIKE={year}&short_desc={short_desc}";
                 }
+                break;
+            case "PROGRESS, 5 YEAR AVG, MEASURED IN PCT PLANTED":
+                short_desc = $"{commodity} - PROGRESS, 5 YEAR AVG, MEASURED IN PCT PLANTED";
+                url = $"{baseUrl}{_usdaConfig.ApiKey}&year__LIKE={year}&short_desc={short_desc}";
+                break;
+            case "CONDITION, 5 YEAR AVG, MEASURED IN PCT EXCELLENT":
+                short_desc = $"{commodity} - CONDITION, 5 YEAR AVG, MEASURED IN PCT EXCELLENT";
+                url = $"{baseUrl}{_usdaConfig.ApiKey}&year__LIKE={year}&metric={metric}&short_desc={short_desc}";
                 break;
             default:
                 break;

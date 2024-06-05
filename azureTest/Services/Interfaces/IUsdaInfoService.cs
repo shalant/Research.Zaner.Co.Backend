@@ -11,4 +11,5 @@ public interface IUsdaInfoService
     List<Datum> GetUsdaDataObjectsByState(string metric, string commodity, string year, string short_desc, string stateAlpha);
     Task<List<Datum>> GetUsdaDataObjectsRefactored(string metric, string commodity, string year, string short_desc);
     Task<List<Datum>> GetUsdaDataObjectsRefactoredMultiYear(string metric, string commodity, string year, string short_desc);
+    Task<List<Datum>> GetUsdaDataObjectsStates(string metric, string commodity, string year, string short_desc);
 }
