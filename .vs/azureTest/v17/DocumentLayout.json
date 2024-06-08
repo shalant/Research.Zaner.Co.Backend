@@ -11,16 +11,20 @@
       "RelativeMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|solutionrelative:azuretest\\controllers\\usdainfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|c:\\coding\\azuretest\\azuretest\\models\\usdainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|solutionrelative:azuretest\\models\\usdainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|c:\\coding\\azuretest\\azuretest\\services\\interfaces\\iusdainfoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|solutionrelative:azuretest\\services\\interfaces\\iusdainfoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|c:\\coding\\azuretest\\azuretest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|solutionrelative:azuretest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|c:\\coding\\azuretest\\azuretest\\azuretest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|solutionrelative:azuretest\\azuretest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|c:\\coding\\azuretest\\azuretest\\models\\usdainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|solutionrelative:azuretest\\models\\usdainfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{416F1D1A-0D70-4996-A2B8-8D88D5E530FA}|azureTest\\azureTest.csproj|c:\\coding\\azuretest\\azuretest\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +46,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Coding\\azureTest\\azureTest\\Program.cs",
               "RelativeDocumentMoniker": "azureTest\\Program.cs",
@@ -54,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "azureTest.csproj",
               "DocumentMoniker": "C:\\Coding\\azureTest\\azureTest\\azureTest.csproj",
               "RelativeDocumentMoniker": "azureTest\\azureTest.csproj",
@@ -72,9 +76,22 @@
               "RelativeDocumentMoniker": "azureTest\\Services\\UsdaInfoService.cs",
               "ToolTip": "C:\\Coding\\azureTest\\azureTest\\Services\\UsdaInfoService.cs",
               "RelativeToolTip": "azureTest\\Services\\UsdaInfoService.cs",
-              "ViewState": "AQIAAO8AAAAAAAAAAAApwPQAAAAAAAAA",
+              "ViewState": "AQIAACgBAAAAAAAAAAAAAAoBAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-10T15:59:39.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUsdaInfoService.cs",
+              "DocumentMoniker": "C:\\Coding\\azureTest\\azureTest\\Services\\Interfaces\\IUsdaInfoService.cs",
+              "RelativeDocumentMoniker": "azureTest\\Services\\Interfaces\\IUsdaInfoService.cs",
+              "ToolTip": "C:\\Coding\\azureTest\\azureTest\\Services\\Interfaces\\IUsdaInfoService.cs",
+              "RelativeToolTip": "azureTest\\Services\\Interfaces\\IUsdaInfoService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAACAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:52:55.183Z",
               "EditorCaption": ""
             },
             {
@@ -85,14 +102,14 @@
               "RelativeDocumentMoniker": "azureTest\\Controllers\\UsdaInfoController.cs",
               "ToolTip": "C:\\Coding\\azureTest\\azureTest\\Controllers\\UsdaInfoController.cs",
               "RelativeToolTip": "azureTest\\Controllers\\UsdaInfoController.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAswCMAAAAIAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAYwCsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-10T15:57:30.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "UsdaInfo.cs",
               "DocumentMoniker": "C:\\Coding\\azureTest\\azureTest\\Models\\UsdaInfo.cs",
               "RelativeDocumentMoniker": "azureTest\\Models\\UsdaInfo.cs",
@@ -100,11 +117,12 @@
               "RelativeToolTip": "azureTest\\Models\\UsdaInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T15:59:12.301Z"
+              "WhenOpened": "2024-05-10T15:59:12.301Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Coding\\azureTest\\azureTest\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "azureTest\\Controllers\\WeatherForecastController.cs",
@@ -116,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Coding\\azureTest\\azureTest\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "azureTest\\Properties\\launchSettings.json",
