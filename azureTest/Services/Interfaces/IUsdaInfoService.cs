@@ -12,5 +12,5 @@ public interface IUsdaInfoService
     Task<List<Datum>> GetUsdaDataObjectsRefactored(string metric, string commodity, string year, string short_desc);
     Task<List<Datum>> GetUsdaDataObjectsRefactoredMultiYear(string metric, string commodity, string year, string short_desc);
     Task<List<Datum>> GetUsdaDataObjectsStates(string metric, string commodity, string year, string short_desc);
-    Task<List<Datum>> CompareProgressTo5YearAverage(string metric, string commodity, string year, string short_desc, string week);
+    Task<List<Datum>> CompareMetricTo5YearAverage(string metric, string commodity, string year, string short_desc, string week);
 }

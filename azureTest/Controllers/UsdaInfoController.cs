@@ -38,10 +38,10 @@ public class UsdaInfoController : ControllerBase
     }
     
     [HttpGet]
-    [Route("/api/GetProgressVsAverage")]
-    public async Task<IActionResult> GetProgressVsAverage(string Metric, string Commodity, string Year, string short_desc, string week)
+    [Route("/api/GetMetricVsAverage")]
+    public async Task<IActionResult> GetMetricVsAverage(string Metric, string Commodity, string Year, string short_desc, string week)
     {
-        var usdaDataObjects = await _usdaInfoService.CompareProgressTo5YearAverage(Metric, Commodity, Year, short_desc, week);
+        var usdaDataObjects = await _usdaInfoService.CompareMetricTo5YearAverage(Metric, Commodity, Year, short_desc, week);
         return Ok(usdaDataObjects);
     }
 
